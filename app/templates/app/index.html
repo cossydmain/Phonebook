@@ -1,30 +1,44 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUiv>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUiv">
+
+
+            <a href="{% url 'app:add_Member' %}" class="btn btn-danger btn-sm" style=" background-color:blue;" >
+                        Add Contact
+                <i class="fas fa-user-plus"></i>
+            </a>
 
 <div class="container">
     <div class="row">
         {% if profiles %}
            {% for prof in profiles  %}
-
             <div class="col-sm-3">
-                <div class="card card-body my-1" style="background-color:grey;">
+                <div class="card card-body my-1" style="background-color:grey; ">
                     <div class="panel panel-default">
                         <a href="">
                             <img src="{{prof.image.url}}" class="rounded-circle mx-auto img-fluid" alt="" style="height:250px; width:250px;">
                         </a>
-                        <div class="caption" style="margin=3px;">
-                            <h5><b>{{prof.name}}</b></h5>
-                            <h6>{{prof.emailaddress}}</h6>
-                            <h6>{{prof.phonenumber}}</h6>
-                            <h6>{{prof.gender}}</h6>
-
-                            <a href="" class="btn btn-danger btn-sm" style=" background-color:grey;" onclick="return confirm('Are you sure you wanna delete this Contact....!?')">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-sm-3">
+                <div class="caption" style="margin=3px;">
+                    <h5><b>{{prof.name}}</b></h5>
+                    <h6>{{prof.emailaddress}}</h6>
+                    <h6>{{prof.phonenumber}}</h6>
+                    <h6>{{prof.gender}}</h6>
+
+                    <a href="{% url 'app:index' %}" class="btn btn-danger btn-sm" style=" background-color:red;float:right;" onclick="return confirm('Are you sure you wanna delete this Contact....!?')">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    <a href="" class="btn btn-danger btn-sm" style=" background-color:blue; width" >
+                        <i class="fas fa-sms"></i>
+                    </a>
+                    <a href="" class="btn btn-danger btn-sm" style=" background-color:green; " onclick="return confirm('Do you wanna call me....?')" >
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+
         {% endfor %}
         {% endif %}
     </div>

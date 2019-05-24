@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Phonebook
-from django.views.generic import ListView,CreateView
+from django.views.generic import ListView,CreateView,DeleteView
 
 # Create your views here.
 
@@ -20,3 +20,9 @@ def get_queryset(self):
 class MemberCreateView(CreateView):
     model = Phonebook
     fields = '__all__'
+
+class MemberDeleteView(DeleteView):
+    model = Phonebook
+    success_url = '/'
+
+
